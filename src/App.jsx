@@ -241,7 +241,7 @@ export default function App() {
 
   if (!token) {
     return (
-      <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center p-4 selection:bg-indigo-500 selection:text-white">
+      <div className="cyber-shell min-h-screen bg-slate-950 flex flex-col items-center justify-center p-4 selection:bg-indigo-500 selection:text-white">
         
         {/* Settings button to adjust backend URL if needed */}
         <button
@@ -252,7 +252,7 @@ export default function App() {
           <Settings className="w-5 h-5" />
         </button>
 
-        <div className="w-full max-w-sm bg-slate-900/80 border border-slate-800 p-8 rounded-3xl shadow-2xl backdrop-blur-sm">
+        <div className="cyber-auth-card w-full max-w-sm bg-slate-900/80 border border-slate-800 p-8 rounded-3xl shadow-2xl backdrop-blur-sm">
           <div className="flex justify-center mb-6">
             <div className="p-3.5 bg-gradient-to-tr from-indigo-600 to-violet-500 rounded-2xl shadow-lg shadow-indigo-500/20">
               <Sparkles className="w-8 h-8 text-white" />
@@ -348,8 +348,8 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col items-center py-8 px-4 sm:px-6 selection:bg-indigo-500 selection:text-white">
-      <div className="w-full max-w-2xl flex flex-col gap-6">
+    <div className="cyber-shell min-h-screen bg-slate-950 text-slate-100 flex flex-col items-center py-8 px-4 sm:px-6 selection:bg-indigo-500 selection:text-white">
+      <div className="cyber-workspace w-full max-w-2xl flex flex-col gap-6">
         
         <header className="flex flex-col gap-4 border-b border-slate-800 pb-5">
           <div className="flex items-center justify-between">
@@ -358,8 +358,9 @@ export default function App() {
                 <Sparkles className="w-6 h-6 text-white" />
               </div>
               <div>
+                <p className="cyber-kicker">TASKFLOW // MISSION CONSOLE</p>
                 <h1 className="text-2xl font-bold tracking-tight text-white flex items-center gap-2">TaskFlow</h1>
-                <p className="text-xs text-slate-400">Secured with JWT</p>
+                <p className="text-xs text-slate-400">YOUR DAILY MISSION CONTROL</p>
               </div>
             </div>
 

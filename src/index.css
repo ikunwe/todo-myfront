@@ -1,13 +1,101 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Cyberpunk presentation layer. Application behavior stays in App.jsx. */
+:root {
+  color-scheme: dark;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  background: #080912;
+  color: #e4f6ff;
+  --cyber-cyan: #51f5ef;
+  --cyber-pink: #ff4ba8;
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* { box-sizing: border-box; }
+body { margin: 0; -webkit-font-smoothing: antialiased; }
+button, input, select { font: inherit; }
+button { cursor: pointer; }
+button:disabled { cursor: not-allowed; }
+::selection { background: #ff4ba8; color: #080912; }
+.cyber-shell {
+  position: relative;
+  isolation: isolate;
+  background-color: #080912;
+  background-image: radial-gradient(ellipse at 15% 0%, #591b5c40, transparent 50%), radial-gradient(ellipse at 90% 80%, #0b646b26, transparent 45%), linear-gradient(#51f5ef08 1px, transparent 1px), linear-gradient(90deg, #51f5ef08 1px, transparent 1px);
+  background-size: auto, auto, 48px 48px, 48px 48px;
+}
+.cyber-shell::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background: repeating-linear-gradient(0deg, transparent 0 3px, #00000015 3px 4px);
+}
+.cyber-shell h1 { letter-spacing: -.04em; text-shadow: 2px 0 #ff4ba870, -2px 0 #51f5ef70; }
+.cyber-shell h2, .cyber-shell h3 { letter-spacing: .025em; }
+.cyber-kicker { color: var(--cyber-cyan); font: 10px/1.5 Consolas, monospace; letter-spacing: .22em; text-transform: uppercase; }
+.cyber-auth-card {
+  position: relative;
+  border-top: 2px solid var(--cyber-cyan) !important;
+  box-shadow: 0 0 50px #51f5ef08, 10px 10px 0 #ff4ba809 !important;
+}
+.cyber-auth-card::before {
+  content: 'TF / ACCESS TERMINAL';
+  display: block;
+  margin-bottom: 28px;
+  color: #7293ab;
+  font: 10px Consolas, monospace;
+  letter-spacing: .15em;
+}
+.cyber-auth-card::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
+  width: 42px;
+  height: 3px;
+  background: var(--cyber-pink);
+  box-shadow: 0 0 15px #ff4ba860;
+}
+.cyber-workspace { padding-top: 20px; }
+.cyber-shell [class*='rounded-'] { border-radius: 5px; }
+.cyber-shell [class*='bg-slate-900'] { background-color: #101320e8; }
+.cyber-shell [class*='bg-slate-950']:not(.cyber-shell) { background-color: #090d17; }
+.cyber-shell [class*='border-slate-'] { border-color: #2a3b50; }
+.cyber-shell [class*='text-slate-500'] { color: #8191ab; }
+.cyber-shell [class*='text-slate-400'] { color: #99a9bf; }
+.cyber-shell [class*='text-indigo-'] { color: var(--cyber-cyan); }
+.cyber-shell [class*='bg-indigo-600'] {
+  color: #061519;
+  background: var(--cyber-cyan);
+  box-shadow: 0 0 18px #51f5ef18;
+  font-weight: 700;
+}
+.cyber-shell button[class*='bg-indigo-600']:hover:not(:disabled) { background: #a0fff9; box-shadow: 0 0 24px #51f5ef40; }
+.cyber-shell [class*='bg-gradient-to-tr'] {
+  background-image: linear-gradient(135deg, #51f5ef, #42a1e9 55%, #cb4eff);
+  box-shadow: 0 0 24px #51f5ef28;
+  border: 1px solid #88ffff70;
+  transform: skew(-5deg);
+}
+.cyber-shell [class*='bg-gradient-to-tr'] svg { color: #080912; }
+.cyber-shell [class*='text-rose-'] { color: #ff70b6; }
+.cyber-shell [class*='text-emerald-'] { color: #70ffb9; }
+.cyber-shell button, .cyber-shell input, .cyber-shell select { transition: background-color .18s, border-color .18s, box-shadow .18s, color .18s; }
+.cyber-shell button:focus-visible, .cyber-shell select:focus-visible { outline: 2px solid var(--cyber-cyan); outline-offset: 4px; }
+.cyber-shell input:focus { outline: none; border-color: var(--cyber-cyan); box-shadow: 0 0 0 3px #51f5ef15; }
+.cyber-shell [class*='focus-within']:focus-within { border-color: var(--cyber-cyan); box-shadow: 0 0 0 2px #51f5ef18, 0 0 24px #51f5ef10; }
+.cyber-shell header { border-bottom-color: #51f5ef45; }
+.cyber-shell .group[class*='items-start'] { border-left: 2px solid #51f5ef80; }
+.cyber-shell .group[class*='items-start']:hover { border-color: #51f5ef80; box-shadow: 0 0 20px #51f5ef08; }
+.cyber-shell .group[class*='items-start']:has(.line-through) { border-left-color: #704582; }
+.cyber-shell [class*='border-dashed'] { background: linear-gradient(135deg, #51f5ef05, #ff4ba805); border-color: #51f5ef35; }
+.cyber-shell input { min-width: 0; }
+.cyber-shell select option { background: #101320; color: #e4f6ff; }
+.cyber-shell .fixed > div { border-top: 2px solid var(--cyber-pink); box-shadow: 0 0 65px #0009, 0 0 30px #ff4ba812; }
+@media (max-width: 640px) {
+  .cyber-workspace { padding-top: 8px; }
+  .cyber-shell header strong { overflow-wrap: anywhere; }
+  .cyber-shell header h1 { font-size: 24px; }
+  .cyber-shell .max-w-\[210px\] { max-width: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
 }
